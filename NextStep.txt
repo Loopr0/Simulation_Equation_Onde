@@ -1,6 +1,8 @@
-donner choix de condition limite (de Neumann ou de Dirichelet)
-poser des conditions initiales plus juste (par exemple fonction de Bessel)
+Résoudre problème quand onde commence au bord (gros bazare)
+
+poser des conditions initiales plus juste ? (par exemple fonction de Bessel)
 travailler en 2D (puis 3D ?)
-Faire changement de milieu en 1D puis dans 2 Dimension
+Faire changement de milieu en 1D puis dans 2D
+condition atténuation au bord possible ?
 
 alternative des solitions (profondeur faible) testable si assez de temps
