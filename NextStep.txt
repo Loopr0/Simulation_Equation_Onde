@@ -1,5 +1,6 @@
 poser des conditions initiales plus juste ? (par exemple fonction de Bessel)
 travailler en 2D (puis 3D ?)
+Faire un oscilateur au condition initiale
 
 lors changement milieu, garder amplitude dans meme sens
 
