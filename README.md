@@ -6,5 +6,5 @@ Le code equation_onde_1D_bord.py, simule la propagation d'une fonction Gaussienn
 De plus les conditions au bord peuvent-être changé en fonction de la simulation attendu. Chaque bord peuvent avoir des conditions indépendantes, condition de :
 - Dirichelet : réfléxion totale avec retournement d'amplitude
 - Neummann : réflexion totale sans retournement d'amplitude
-- Attenuation : l'onde ce réfléchi avec une atténuation, ou, si K = 0 elle ce propage en dehors du cadre
+- sans bord : l'onde ne se réfléchi pas
 
