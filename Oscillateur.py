@@ -73,7 +73,7 @@ plt.show()
 
 
 """
-Test de l'oscillo sur le prog wavevelocity, c'est pas mal mais à amélioré, voir comment au dessus
+Test de l'oscillo sur le prog wavevelocity, c'est pas mal mais à améliorer, voir comment au dessus
 
 
 
