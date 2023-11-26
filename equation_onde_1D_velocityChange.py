@@ -12,7 +12,7 @@ rester en condition CFL
 L = 5  # Longueur de la corde
 T = 0.1  # Temps total
 dx = 0.01
-dt = 0.0001
+dt = 0.001
 Nx = int(L/dx) # Nombre de points spatiaux
 Nt = int(T/dt)  # Nombre de pas de temps
 
@@ -30,13 +30,12 @@ def init_cond(x):
 #changement de vitesse en x = 2.5
 def celer(x):
     if x <= 3:
-        return 50
+        return 10
     else:
-        return 100
+        return 5
 
 for e in range(0,Nx):
     c[e] = celer(x[e])
-
 
 
 
@@ -70,3 +69,5 @@ def update(frame):
 
 anim = animation.FuncAnimation(fig,update,frames = Nt, interval = 10,blit = False)
 plt.show()
+
+

@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
+
 """
 programme pour simuler la propagation d'une onde en 1D sur une longueur L avec condition au limite tels que soit :
 - reflexion totale
@@ -15,17 +16,18 @@ Cette condition dis que udt/dx = CFL
 """
 
 #définition des paramètres du problème
-c = 100 # Vitesse de l'onde
+c = 10 # Vitesse de l'onde
 L = 5  # Longueur de la corde
-T = 0.1  # Temps total
+T = 2  # Temps total
 
 dx = 0.01
-dt = 0.0001
+dt = 0.001
 Nx = int(L/dx) # Nombre de points spatiaux
 Nt = int(T/dt)  # Nombre de pas de temps
 
+
 x = np.linspace(0,L,Nx)
-x_init = L/2 #onde placée au centre de la longueur L
+x_init = L/2 #pour x_init 0 ou L il faut vérifié les conditions de neumann en ce bord
 
 
 
@@ -37,8 +39,8 @@ def init_cond(x):
 
 
 #condition au bord : 0 = dirichelet, 1 = Neumann, 2 = sans bord
-Bord_Lx = 1
 Bord_0x = 1
+Bord_Lx = 1
 
 #mise en place des matrices utiles, avec U placée au condition initiale x_init
 U = init_cond(x)
@@ -51,6 +53,7 @@ Unew = np.zeros_like(x)
 fig, ax = plt.subplots()
 ax.set_xlim(0, L)
 ax.set_ylim(-0.6, 1)
+
 ax.grid()
 line, = ax.plot(x, U)
 
@@ -64,7 +67,6 @@ def update(frame):
     Uold = U.copy()
     U = Unew.copy()
 
-
 #condition au limite gauche x = 0
     if Bord_0x == 0:
         U[0] = 0
@@ -73,7 +75,7 @@ def update(frame):
         U[0] = U[1] #dans cette condition, l'amplitude en 0 dois valoir l'amplitude qui arrive sur la paroi
 
     elif Bord_0x == 2:
-        Unew[0] = U[1] + ( Unew[0] - U[1]) #condition de continuité, propagation sans bord
+        Unew[0] = U[1] #condition de continuité, propagation sans bord
 
 
 #condition au limite droite x = L
@@ -84,7 +86,7 @@ def update(frame):
         U[-1] = U[-2]
 
     elif Bord_Lx == 2:
-        Unew[-1] = U[-2] + ( Unew[-1] - U[-2]) 
+        Unew[-1] = U[-2]
     
 
     line.set_ydata(U)

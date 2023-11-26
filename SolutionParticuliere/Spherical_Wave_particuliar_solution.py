@@ -16,7 +16,7 @@ def OPP(time,r,k,f):
 
 
 
-x, y = np.meshgrid(np.linspace(-1, 1, 1000), np.linspace(-1, 1, 1000))
+x, y = np.meshgrid(np.linspace(-1, 1, 500), np.linspace(-1, 1, 500))
 r = x**2 + y**2
 
 
@@ -30,19 +30,26 @@ for t in range(0,100,1):
 """
 
 
-fig, ax = plt.subplots()
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+
 
 def animate(i):
     ax.clear()
-    ax.contourf(x,y,OPP(i*10**-2,r,k,f))
+    #ax.contourf(x,y,OPP(i*10**-2,r,k,f))
+    ax.plot_surface(x, y, OPP(i*10**-2,r,k,f), cmap='viridis')
     ax.set_title(i)
 
 
-ani = animation.FuncAnimation(fig,animate,100,interval = 100,blit=False)
+ani = animation.FuncAnimation(fig,animate,100,interval = 10,blit=False)
 
 
 
-plt.show()
+
+#solution temps calcul framerate bien
+Writer = animation.writers['ffmpeg']
+writer = Writer(fps=25, bitrate=1800)
+ani.save('test3D.mp4', writer=writer)
 
 
-
+#ani.save('myani.mp4',writer='ffmpeg',fps=10) #solution simple pas opti

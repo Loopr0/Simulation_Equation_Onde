@@ -4,10 +4,17 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 """
-oscillateur amortie où le but st d'avoir une amplitude variant au cours du temps à une position précise, le temps ici fais office d'évolution temporelle mais on veut simple point
-à une position x0 fixe dont sa postion z évolue en fonction de t. Ce programme sera ajouté au prog principale de l'équation d'onde.
+oscillateur amortie où le but est d'avoir une amplitude variant au cours du temps à une position précise, le temps ici fais office d'évolution temporelle mais on veut simple point
+à une position x0 fixe dont sa postion z évolue en fonction de t. Ce programme sera ajouté au prog principale de l'équation d'onde. L'oscillo marche pour un temps T long
+si T n'est pas assez long l'oscillo redémarerra et il y aura 2 propagation d'oscillo dans le milieu.
+
+Il est mieux d'importé l'oscillateur dans un milieu dispersif sinon pas cohérent avec physique
 
 """
+
+
+"""
+#partie oscillo simple
 
 
 w0 = 8
@@ -52,55 +59,48 @@ plt.show()
 
 
 
-#fix le bouclage de frame, càd trouver comment faire pour avoir variable variant dans update sans frame et modifiable ou trouver condition
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 """
-Test de l'oscillo sur le prog wavevelocity, c'est pas mal mais à améliorer, voir comment au dessus
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+#oscillo avec propagation
 
 
 
 #définition des paramètres du problème
-L = 50  # Longueur de la corde
-T = 0.1  # Temps total
+L = 10  # Longueur de la corde
+T = 2  # Temps total
 dx = 0.01
 dt = 0.001
 Nx = int(L/dx) # Nombre de points spatiaux
 Nt = int(T/dt)  # Nombre de pas de temps
 
 x = np.linspace(0,L,Nx)
-x_init = 0 #onde placée au centre de la longueur L
+x_init = int(Nx/2) #onde placée au centre de la longueur L
 
 c = np.zeros_like(x)
 
 
-
+#parametres oscillo
 alpha = 2
 w0 = 5
 z0 = 0
-zpoint0 = 2
+zpoint0 = -2
 
 
 def f(X,t):
@@ -150,8 +150,10 @@ line, = ax.plot(x, U)
 
 def update(frame):
     global U, Uold, Unew
-    
-    U[int(Nx/2)] = sol(z0,zpoint0)[frame,0]
+    print(frame)
+
+    if frame <= 500:     #nombre suffisament grand pour que l'oscillo tende vers sa position d'équilibre pour éviter effet de superposition
+        U[x_init] = sol(z0,zpoint0)[frame,0]
 
     Unew[1:-1] = (c[1:-1]*dt/dx)**2*(U[2:] - 2*U[1:-1] + U[:-2]) + 2*U[1:-1] - Uold[1:-1]
     Uold = U.copy()
@@ -164,7 +166,7 @@ def update(frame):
     return line,
 
 
-anim = animation.FuncAnimation(fig,update,frames = 500, interval = 10,blit = False)
+anim = animation.FuncAnimation(fig,update,frames = Nt, interval = 10,blit = False)
 plt.show()
 
-"""
+
