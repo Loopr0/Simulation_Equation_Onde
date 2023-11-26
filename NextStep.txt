@@ -1,9 +1,5 @@
-poser des conditions initiales plus juste ? (par exemple fonction de Bessel)
-travailler en 2D (puis 3D ?)
-Faire un oscilateur au condition initiale
-
 lors changement milieu, garder amplitude dans meme sens
 
 condition atténuation au bord possible ?
 
-alternative des solitions (profondeur faible) testable si assez de temps
+Travailler dans milieu dispersif.
