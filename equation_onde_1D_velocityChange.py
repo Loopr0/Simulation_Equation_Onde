@@ -3,9 +3,8 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 """
-programme pour simuler la propagation d'une onde en 1D avec changement de vitesse en x = 3 les conditions
-au bord son ce de Neumann et la vitesse est divisé par 2. Attention lors d'un changement de vitesse
-rester en condition CFL
+programme pour simuler la propagation d'une onde en 1D avec changement de vitesse en x = 3 (possible de changer) les conditions
+au bord son ce de Neumann et la vitesse est divisé par 2. Attention lors d'un changement de vitesse, rester en condition CFL
 """
 
 #définition des paramètres du problème

@@ -39,7 +39,7 @@ def init_cond(x):
 
 
 #condition au bord : 0 = dirichelet, 1 = Neumann, 2 = sans bord
-Bord_0x = 1
+Bord_0x = 0
 Bord_Lx = 1
 
 #mise en place des matrices utiles, avec U placée au condition initiale x_init
@@ -60,6 +60,7 @@ line, = ax.plot(x, U)
 
 def update(frame):
     global U, Uold, Unew
+    print(frame)
 
     Unew[1:-1] = (c*dt/dx)**2*(U[2:] - 2*U[1:-1] + U[:-2]) + 2*U[1:-1] - Uold[1:-1]
     #en prenant cette intervalle ]0,L[ on ne prend pas en compte les limites au bord qui sont pris en compte dans les if
