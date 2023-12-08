@@ -8,6 +8,6 @@ De plus les conditions au bord peuvent-être changé en fonction de la simulatio
 - Neummann : réflexion totale sans retournement d'amplitude
 - sans bord : l'onde ne se réfléchi pas
 
-la suite sera rédiger plus tard
+la suite sera rédiger plus tard...
 
 
