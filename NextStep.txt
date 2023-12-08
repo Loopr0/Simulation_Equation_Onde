@@ -1,0 +1,5 @@
+lors changement milieu, garder amplitude dans meme sens
+
+condition atténuation au bord possible ?
+
+Travailler dans milieu dispersif
